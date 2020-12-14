@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="ryan saputro">
+        <meta name="email" content="ryansaputro52@gmail.com">
+        <title>Test Websocket</title>
+    </head>
+    <body>
+        Client 1
+        <button onclick="sendMsg()">Kirim</button>
+    </body>
+    <script>
+        // Create WebSocket connection.
+            const socket = new WebSocket('ws://localhost:5000');
+
+            // Connection opened
+            socket.addEventListener('open', function (event) {
+                socket.send('Hello Server!');
+            });
+
+            // Listen for messages
+            socket.addEventListener('message', function (event) {
+                console.log('Message from server ', event.data);
+            });
+
+            //send sendMsg
+            const sendMsg = () => {
+                socket.send('Hallo from Client 1 ryan');
+            }
+    </script>
+</html>
